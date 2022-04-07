@@ -1,0 +1,51 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+        <form>
+
+            <div class="form-group row  my-2">
+                <label for="nombre" class="col-form-label col-sm-1 mx-3">Nombre</label>
+                <div class="col-sm-6">
+                    <!--" " -->
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="producto.nombre" name="nombre">
+                </div>
+            </div>
+
+            <div class="form-group row  my-2">
+                <label for="Precio" class="col-form-label col-sm-1 mx-3">Precio</label>
+                <div class="col-sm-6">
+
+                    <input type="text" class="form-control" [(ngModel)]="producto.precio" name="precio">
+                </div>
+            </div>
+
+            <div class="form-group row  my-2">
+                <label for="mercado" class="col-form-label col-sm-1 mx-3">Mercado</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.mercado" name="mercado">
+                </div>
+            </div>
+
+            <div class="form-group row  my-2">
+                <label for="idMercado" class="col-form-label col-sm-1 mx-3">Id Mercado</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.idMercado" name="idMercado">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-danger mx-2" role="button" (click)='create()' *ngIf="!producto.id else elseBlock">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-danger mx-2" role="button" (click)='update()'>Editar</button>
+
+                    </ng-template>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <div></div>
+</div>

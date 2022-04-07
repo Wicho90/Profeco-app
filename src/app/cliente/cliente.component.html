@@ -1,0 +1,27 @@
+<h1>Cilentes <small>nose</small></h1>
+
+<hr>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col" *ngFor="let producto of productos">
+        <div class="card">
+            <img src="assets/img/producto.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{producto.nombre}}</h5>
+                <p class="card-text">${{producto.precio}}</p>
+
+                <div class="d-grid gap-2">
+                    <button [routerLink]="['/pro',producto.id]" type="button" class=" btn btn-outline-danger btn-block">
+                    Ver más..
+                </button>
+                </div>
+                <!-- <a [routerLink]="['/pro',producto.id]" class="btn btn-outline-primary">Ver mas</a> -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
