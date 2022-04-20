@@ -31,19 +31,20 @@ export class FormComponent implements OnInit {
 
   public create(): void{
     this.productoService.create(this.producto)
-    .subscribe(producto => {
+    .subscribe(json => {
       this.router.navigate(['/productos'])
-      swal('Nuevo producto',`Producto ${producto.nombre} creado con éxito!` , 'success')
+      swal('Nuevo producto',`${json.mensaje}: ${json.producto.nombre}` , 'success')
     }
     );
   }
 
   update():void{
     this.productoService.update(this.producto)
-    .subscribe(producto =>{
+    .subscribe(json =>{
       this.router.navigate(['/productos'])
-      swal('Producto Actualizado', `Producto ${producto.nombre} actualizado con éxito`,'success')
-    })
+      swal('Producto Actualizado',`${json.mensaje}: ${json.producto.nombre}` , 'success');
+
+    });
   }
 
 }
