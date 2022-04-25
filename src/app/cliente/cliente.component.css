@@ -1,0 +1,9 @@
+#sabe {
+    height: 50%;
+    width: 100%;
+}
+
+img {
+    max-height: 200px;
+    width: auto;
+}

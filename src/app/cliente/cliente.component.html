@@ -5,8 +5,12 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
     <div class="col" *ngFor="let producto of productos">
-        <div class="card">
-            <img src="assets/img/producto.jpg" class="card-img-top" alt="...">
+        <div class="card" id="contenedor" style="width: 18rem;">
+
+            <div class="text-center" id="sabe">
+                <img *ngIf="producto?.foto" src="http://localhost:5050/api/uploads/img/{{producto.foto}}" alt="foto producto" class="rounded">
+            </div>
+
             <div class="card-body">
                 <h5 class="card-title">{{producto.nombre}}</h5>
                 <p class="card-text">${{producto.precio}}</p>
@@ -25,3 +29,4 @@
 
 
 </div>
+<cliente-paginator *ngIf="paginador" [paginador]="paginador"></cliente-paginator>

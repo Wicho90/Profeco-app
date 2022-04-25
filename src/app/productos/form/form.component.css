@@ -1,0 +1,28 @@
+#principal {
+    width: 80%;
+    margin: auto;
+}
+
+#titulo {}
+
+label {
+    width: 50%;
+    position: relative;
+    margin: 1px 24%;
+}
+
+input {
+    width: 90%;
+    position: relative;
+    margin: 0% 50% 0 50%;
+}
+
+#errors {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.lis {
+    margin: 0 20px;
+}

@@ -1,13 +1,19 @@
-<div class="card bg-dark text-white">
-    <div class="card-header">{{titulo}}</div>
+<ul class="alert alert-danger" *ngIf="errores?.length > 0" id="errors">
+    <li *ngFor="let err of errores" class="lis">
+        {{ err }}
+    </li>
+</ul>
+<div class="card bg-dark text-white" id="principal">
+    <div class="card-header" id="titulo">{{titulo}}</div>
     <div class="card-body">
-        <form #productoForm="ngForm">
+        <form #productoForm="ngForm" id="form">
 
-            <div class="form-group row  my-2">
-                <label for="nombre" class="col-form-label col-sm-1 mx-3">Nombre</label>
+            <div class="form-group row " id="div-uno">
+                <label for="nombre" class="col-form-label col-sm-1 ">Nombre</label>
                 <div class="col-sm-6">
                     <!--" " -->
-                    <input type="text" class="form-control" name="nombre" [(ngModel)]="producto.nombre" name="nombre" required minlength="3" #nombre="ngModel">
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="producto.nombre" name="nombre" #nombre="ngModel">
+                    <!--required minlength="3"-->
                     <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                         <div *ngIf="nombre.errors.required">
                             El nombre es requerido
@@ -19,10 +25,11 @@
                 </div>
             </div>
 
-            <div class="form-group row  my-2">
-                <label for="Precio" class="col-form-label col-sm-1 mx-3">Precio</label>
+            <div class="form-group row ">
+                <label for="Precio" class="col-form-label col-sm-1 ">Precio</label>
                 <div class="col-sm-6">
-                    <input type="number" class="form-control" [(ngModel)]="producto.precio" name="precio" required #precio="ngModel">
+                    <input type="number" class="form-control" [(ngModel)]="producto.precio" name="precio" #precio="ngModel">
+                    <!--required -->
                     <div class="alert alert-danger" *ngIf="precio.invalid && (precio.dirty || precio.touched)">
                         <div *ngIf="precio.errors.required">
                             El precio es requerido
@@ -32,10 +39,11 @@
                 </div>
             </div>
 
-            <div class="form-group row  my-2">
-                <label for="mercado" class="col-form-label col-sm-1 mx-3">Mercado</label>
+            <div class="form-group row ">
+                <label for="mercado" class="col-form-label col-sm-1 ">Mercado</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="producto.mercado" name="mercado" required minlength="4" #mercado="ngModel">
+                    <input type="text" class="form-control" [(ngModel)]="producto.mercado" name="mercado" #mercado="ngModel">
+                    <!--required minlength="4"-->
                     <div class="alert alert-danger" *ngIf="mercado.invalid && (mercado.dirty || mercado.touched)">
                         <div *ngIf="mercado.errors.required">
                             El mercado es requerido
@@ -47,10 +55,11 @@
                 </div>
             </div>
 
-            <div class="form-group row  my-2">
-                <label for="idMercado" class="col-form-label col-sm-1 mx-3">Id Mercado</label>
+            <div class="form-group row ">
+                <label for="idMercado" class="col-form-label col-sm-1 ">Id Mercado</label>
                 <div class="col-sm-6">
-                    <input type="number" class="form-control" [(ngModel)]="producto.idMercado" name="idMercado" required #idMercado="ngModel">
+                    <input type="number" class="form-control" [(ngModel)]="producto.idMercado" name="idMercado" #idMercado="ngModel">
+                    <!--required -->
                     <div class="alert alert-danger" *ngIf="idMercado.invalid && (idMercado.dirty || idMercado.touched)">
                         <div *ngIf="idMercado.errors.required">
                             El id del mercado es requerido

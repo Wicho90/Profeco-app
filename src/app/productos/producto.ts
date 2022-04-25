@@ -5,5 +5,6 @@ export class Producto {
     precio: number;
     idMercado: number;
     createAt: string;
+    foto: string;
     
 }

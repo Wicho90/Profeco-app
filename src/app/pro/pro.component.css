@@ -1,0 +1,13 @@
+#imgaen {
+    height: 390;
+    width: 390;
+}
+
+img {
+    max-height: 500px;
+    width: auto;
+}
+
+#l2 {
+    margin-left: 10%;
+}

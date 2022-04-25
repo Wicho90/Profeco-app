@@ -5,7 +5,8 @@ import { ProductoService } from '../services/producto.service';
 
 @Component({
   selector: 'app-pro',
-  templateUrl: './pro.component.html'
+  templateUrl: './pro.component.html',
+  styleUrls: ['./pro.component.css']
 })
 export class ProComponent implements OnInit {
   public producto:Producto = new Producto;

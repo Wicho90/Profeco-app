@@ -1,13 +1,15 @@
 <div class="row">
 
-    <div class="col-md-4">
-        <img src="assets/img/producto.jpg" class="img-fluid" alt="">
+    <div class="col-md-4" id="l1">
+        <div id="imagen">
+            <img *ngIf="producto?.foto" src="http://localhost:5050/api/uploads/img/{{producto.foto}}" alt="foto producto">
+        </div>
         <br><br>
         <a [routerLink]="['/clientes']" class="btn btn-outline-danger btn-block">Regresar</a>
 
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-4" id="l2">
         <h3>{{producto.nombre}}</h3>
         <a href="">Vendido por {{producto.mercado}}</a>
         <p></p>

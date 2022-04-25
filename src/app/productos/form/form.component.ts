@@ -7,11 +7,13 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-form',
   templateUrl:'./form.component.html',
+  styleUrls: ['./form.component.css']
   
 })
 export class FormComponent implements OnInit {
   public producto:Producto = new Producto;
   public titulo:string = 'Crear Producto';
+  public errores: string[];
   constructor(private productoService: ProductoService,
     private router: Router,
     private activatedRoute:ActivatedRoute) { }
@@ -34,6 +36,11 @@ export class FormComponent implements OnInit {
     .subscribe(json => {
       this.router.navigate(['/productos'])
       swal('Nuevo producto',`${json.mensaje}: ${json.producto.nombre}` , 'success')
+    },
+    err => {
+      this.errores = err.error.errors as string[];
+      console.error('Codigo del error desde el backend: ' + err.status);
+      console.error( err.error.errors);
     }
     );
   }
@@ -44,7 +51,13 @@ export class FormComponent implements OnInit {
       this.router.navigate(['/productos'])
       swal('Producto Actualizado',`${json.mensaje}: ${json.producto.nombre}` , 'success');
 
-    });
+    },
+    err => {
+      this.errores = err.error.errors as string[];
+      console.error('Codigo del error desde el backend: ' + err.status);
+      console.error( err.error.errors);
+    }
+    );
   }
 
 }

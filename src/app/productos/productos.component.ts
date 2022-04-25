@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from './producto';
 import { ProductoService } from '../services/producto.service';
 import swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -10,17 +11,24 @@ import swal from 'sweetalert2';
 export class ProductosComponent implements OnInit {
   
   productos: Producto[];
+  paginador: any;
   
-  constructor(private productoService : ProductoService) { }
+  constructor(private productoService : ProductoService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-   this.productoService.getProductos().subscribe(
-     (productos) => {
-       this.productos = productos
-    }
-   );
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page: number = +params.get('page');
+      if (!page) {
+        page = 0;
+      }
+      this.productoService.getProductos(page)
+        .subscribe(response => {this.productos = response.content as Producto[];
+          this.paginador = response;
+        }
+          );
+    });
 
-   
   }
 
   delete(productos: Producto): void{
