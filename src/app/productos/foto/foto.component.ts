@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto.service';
+import { ModalService } from 'src/app/services/modal.service';
 import { Producto } from '../producto';
 import swal from 'sweetalert2';
 import { HttpEventType } from '@angular/common/http';
@@ -12,25 +12,15 @@ import { HttpEventType } from '@angular/common/http';
 })
 export class FotoComponent implements OnInit {
 
-  producto:Producto;
+  @Input() producto:Producto;
   titulo : string = "Foto producto"
   fotoSeleccionada: File;
   progreso:number = 0;
 
   constructor(private productoService:ProductoService,
-    private activatedRoute:ActivatedRoute) { }
+    public modalService:ModalService) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
-      let id:number = +params.get('id');
-
-      if(id){
-        this.productoService.getProducto(id).subscribe(producto => {
-          this.producto = producto;
-        });
-      }
-    });
-  }
+  ngOnInit(): void { }
 
   seleccionarFoto(event){
     this.fotoSeleccionada = event.target.files[0];
@@ -58,6 +48,10 @@ export class FotoComponent implements OnInit {
         }
       });
     }
+  }
+
+  cerrarModal(){
+    this.modalService.cerrarModal();
   }
 
 }

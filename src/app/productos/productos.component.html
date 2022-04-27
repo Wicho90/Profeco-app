@@ -1,3 +1,4 @@
+<foto-producto *ngIf="productoSeleccionado" [producto]="productoSeleccionado"></foto-producto>
 <div class="card border-primary mb-3" style="max-width: 1000px;">
     <div class="card-header">Productos</div>
     <div class="card-body text-primary">
@@ -23,7 +24,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let producto of productos">
-                    <td><button type="button" [routerLink]="['/productos/ver',producto.id]" class="btn btn-primary">{{producto.id}}</button></td>
+                    <td><button type="button" (click)="abrirModal(producto)" class="btn btn-primary">{{producto.id}}</button></td>
                     <td>{{producto.nombre}}</td>
                     <td>{{producto.precio}}</td>
                     <td>{{producto.mercado}}</td>

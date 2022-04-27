@@ -31,7 +31,6 @@ const routes:Routes = [
   {path: 'productos/page/:page', component: ProductosComponent},
   {path: 'productos/form', component: FormComponent},
   {path: 'productos/form/:id', component: FormComponent},
-  {path: 'productos/ver/:id', component: FotoComponent},
 
   {path: 'clientes', component: ClienteComponent},
   {path: 'clientes/page/:page', component: ClienteComponent},

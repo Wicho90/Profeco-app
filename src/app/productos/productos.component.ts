@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from './producto';
 import { ProductoService } from '../services/producto.service';
+import { ModalService } from '../services/modal.service';
 import swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,8 +13,10 @@ export class ProductosComponent implements OnInit {
   
   productos: Producto[];
   paginador: any;
+  productoSeleccionado:Producto;
   
   constructor(private productoService : ProductoService,
+    private modalService:ModalService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -63,6 +66,11 @@ export class ProductosComponent implements OnInit {
         
       }
     })
+  }
+
+  abrirModal(producto:Producto){
+    this.productoSeleccionado = producto;
+    this.modalService.abrirModal();
   }
 
 }
