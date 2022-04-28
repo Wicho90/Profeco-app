@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../producto';
+import { Mercado } from '../mercado';
 import { ProductoService } from '../../services/producto.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
@@ -11,12 +12,13 @@ import swal from 'sweetalert2';
   
 })
 export class FormComponent implements OnInit {
-  public producto:Producto = new Producto;
-  public titulo:string = 'Crear Producto';
+  public producto: Producto = new Producto;
+  public mercados: Mercado[];
+  public titulo: string = 'Crear Producto';
   public errores: string[];
   constructor(private productoService: ProductoService,
     private router: Router,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.cargarProducto()
@@ -28,7 +30,8 @@ export class FormComponent implements OnInit {
       if(id){                                  //producto consulta | producto de actual   
         this.productoService.getProducto(id).subscribe( (producto) => this.producto = producto)
       }
-    })
+    });
+    this.productoService.getMercados().subscribe(mercados => this.mercados = mercados);
   }
 
   public create(): void{
@@ -58,6 +61,13 @@ export class FormComponent implements OnInit {
       console.error( err.error.errors);
     }
     );
+  }
+
+  compararMercado(o1: Mercado, o2: Mercado):boolean {
+    if  (o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return  o1 === null || o2 === null || o1 === undefined || o2 === undefined? false : o1.id === o2.id;
   }
 
 }

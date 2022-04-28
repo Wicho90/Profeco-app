@@ -17,6 +17,12 @@ input {
     margin: 0% 50% 0 50%;
 }
 
+select {
+    width: 90%;
+    position: relative;
+    margin: 0% 50% 0 50%;
+}
+
 #errors {
     width: 80%;
     margin: auto;

@@ -44,7 +44,7 @@ export class FotoComponent implements OnInit {
         }else if(event.type === HttpEventType.Response){
           let response:any = event.body;
           this.producto = response.producto as Producto;
-          swal('La fot se ha subido completamente!', response.mensaje, 'success');
+          swal('La foto se ha subido completamente!', response.mensaje, 'success');
         }
       });
     }

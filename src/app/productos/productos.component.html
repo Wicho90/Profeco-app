@@ -27,8 +27,8 @@
                     <td><button type="button" (click)="abrirModal(producto)" class="btn btn-primary">{{producto.id}}</button></td>
                     <td>{{producto.nombre}}</td>
                     <td>{{producto.precio}}</td>
-                    <td>{{producto.mercado}}</td>
-                    <td>{{producto.idMercado}}</td>
+                    <td>{{producto.mercado.nombre}}</td>
+                    <td>{{producto.mercado.id}}</td>
                     <td>{{producto.createAt | date:"EEEE dd, MMMM yyy"}}</td>
                     <td>
                         <button type="button" name="editar" [routerLink]="['/productos/form',producto.id]" class="btn btn-primary">Editar</button>

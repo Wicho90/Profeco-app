@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Producto } from '../productos/producto';
+import { Mercado } from '../productos/mercado';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { of,Observable, throwError } from 'rxjs';
@@ -16,6 +17,10 @@ export class ProductoService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  getMercados(): Observable<Mercado[]> {
+    return this.http.get<Mercado[]>(this.urlEndPoint + '/mercados');
+  }
 
   getProductos(page: number): Observable<any>{ 
       return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
